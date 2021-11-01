@@ -9,3 +9,80 @@
 // No Jquery allowed. 
 // It must be done on your github accounts.
 // A well organized readMe with markdown has to be used. 
+
+// let url = "https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=Xl9ulMh0BRyo7Q7dX2vUBdl5uadPjptgOHpnKRL5"
+
+
+// fetch (url)
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data.results.sunrise);
+//     console.log(data.results.sunset);
+
+//     $('#sunrise').text(data.results.sunrise);
+//     $('#sunset').text(data.results.sunset);
+// });
+
+var contentArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+document.getElementById("save_card").addEventListener("click", () => {
+  addFlashcard();
+});
+
+document.getElementById("delete_cards").addEventListener("click", () => {
+  localStorage.clear();
+  flashcards.innerHTML = '';
+  contentArray = [];
+});
+
+document.getElementById("show_card_box").addEventListener("click", () => {
+  document.getElementById("create_card").style.display = "block";
+});
+
+document.getElementById("close_card_box").addEventListener("click", () => {
+  document.getElementById("create_card").style.display = "none";
+});
+
+flashcardMaker = (text) => {
+  const flashcard = document.createElement("div");
+  const question = document.createElement('h2');
+  const answer = document.createElement('h2');
+
+  flashcard.className = 'flashcard';
+
+  question.setAttribute("style", "border-top:1px solid red; padding: 15px; margin-top:30px");
+  question.textContent = text.my_question;
+
+  answer.setAttribute("style", "text-align:center; display:none; color:red");
+  answer.textContent = text.my_answer;
+
+  flashcard.appendChild(question);
+  flashcard.appendChild(answer);
+
+  flashcard.addEventListener("click", () => {
+    if(answer.style.display == "none")
+      answer.style.display = "block";
+    else
+      answer.style.display = "none";
+  })
+
+  document.querySelector("#flashcards").appendChild(flashcard);
+}
+
+contentArray.forEach(flashcardMaker);
+
+addFlashcard = () => {
+  const question = document.querySelector("#question");
+  const answer = document.querySelector("#answer");
+
+  let flashcard_info = {
+    'my_question' : question.value,
+    'my_answer'  : answer.value
+  }
+
+  contentArray.push(flashcard_info);
+  localStorage.setItem('items', JSON.stringify(contentArray));
+  flashcardMaker(contentArray[contentArray.length - 1]);
+  question.value = "";
+  answer.value = "";
+}

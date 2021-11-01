@@ -1,9 +1,110 @@
-html,
-body {
-font-family: "Open Sans";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#flashcardBox {
+    text-align: center;
+    color: black
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    background: whitesmoke;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0;
+    background-color: white;
+} 
+.nav button{
+    font-family: inherit;
+}
+button{
+    padding: 8px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background: whitesmoke;
 }
 
-img {
-padding: 5px;
-border: 1px solid #ccc;
+button:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container{
+    width: 95%;
+    margin: auto;
+}
+
+header{
+    background-color: #fff;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    padding: 0 20px;
+    background: #fff;
+}
+
+#header button{
+    font-family: inherit;
+    border: 1px solid red;
+}
+
+#create_card{
+    display: none;
+    width: 370px;
+    margin:auto;
+    padding: 20px;
+    margin-top: 10px;
+    background: whitesmoke;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
+}
+
+#create_card h2{
+    color: black;
+    text-align: center;
+}
+
+#create_card textarea{
+    width: 100%;
+    border-radius: 5px;
+    font-family: inherit;
+    border: 1px solid lightgray;
+}
+
+#create_card button{
+    width: fit-content;
+}
+
+#flashcards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 0px 10px;
+}
+
+.flashcard{
+width: 370px;
+height: 200px;
+word-wrap: break-word;
+margin: 10px; 
+background:#fff;
+cursor: pointer;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
+}
+
+.flashcard h2{
+    font-size: 1rem;
 }
